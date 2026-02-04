@@ -20,7 +20,7 @@ We take the pain out of publishing Electron applications:
 |---------|-------------|--------|
 | [`@electron-publish-pro/sdk`](https://github.com/electron-publish-pro/sdk) | JavaScript/TypeScript SDK | 🚧 Soon |
 | [`@electron-publish-pro/cli`](https://github.com/electron-publish-pro/cli) | Command-line interface | 🚧 Soon |
-| [`@electron-publish-pro/action`](https://github.com/electron-publish-pro/action) | GitHub Action | 🚧 Soon |
+| [`docs`](https://github.com/electron-publish-pro/docs) | Documentation | 🚧 Soon |
 
 ## ⚡ Quick Example
 
