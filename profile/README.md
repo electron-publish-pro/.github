@@ -1,57 +1,48 @@
 # Electron Publish Pro
 
-> Managed build infrastructure for Electron apps. Code signing, notarization, and store publishing — without CI/CD complexity.
+> Find what blocks a signed release of your Electron app, then fix it.
 
-**Think Expo, but for Electron.**
+Electron Publish Pro checks an Electron project the way a release would: code signing, macOS notarization, Windows signing, security settings, Mac App Store and Microsoft Store requirements, and auto-update. Every issue comes with a concrete fix. **Free during the beta.**
 
-## 🚀 What We Do
+## Run a check
 
-We take the pain out of publishing Electron applications:
+**On the web:** sign in at [electronpublish.com](https://electronpublish.com), connect a GitHub repo and run a Release Readiness Check.
 
-- 🔄 **Sync** code from GitHub to our secure cloud
-- 🔨 **Build** for macOS, Windows, and Linux in parallel
-- ✍️ **Sign** with Apple Developer & Windows Authenticode certificates
-- 🍎 **Notarize** automatically for macOS
-- 📦 **Publish** to Mac App Store, Microsoft Store, Snap Store, or GitHub Releases
+**From your terminal, CI or an AI agent:**
 
-## 📦 Our Packages
+```bash
+npm install -g electron-publish-pro
 
-| Package | Description | Status |
-|---------|-------------|--------|
-| [`@electron-publish-pro/sdk`](https://github.com/electron-publish-pro/sdk) | JavaScript/TypeScript SDK | 🚧 Soon |
-| [`@electron-publish-pro/cli`](https://github.com/electron-publish-pro/cli) | Command-line interface | 🚧 Soon |
-| [`docs`](https://github.com/electron-publish-pro/docs) | Documentation | 🚧 Soon |
-
-## ⚡ Quick Example
-
-```typescript
-import { ElectronPublishPro } from '@electron-publish-pro/sdk';
-
-const client = new ElectronPublishPro({ apiKey: 'your-api-key' });
-
-// Trigger a build for all platforms
-const build = await client.builds.create({
-  projectId: 'my-project',
-  platforms: ['macos', 'windows', 'linux'],
-  version: '1.0.0'
-});
-
-// Check build status
-const status = await client.builds.get(build.id);
-console.log(status); // { status: 'completed', artifacts: [...] }
+epp login                                        # your electronpublish.com email and password
+cd my-electron-app
+epp init --goal direct --platforms macos,windows
+epp check                                        # or: epp check --json --fail-on fail
 ```
 
-## 🔗 Links
+The CLI reads files from the current folder, so it works with any git host and with uncommitted changes. Run `epp files` to see exactly what is sent.
 
-- 🌐 [Website](https://electronpublish.com)
+## Repositories
+
+| Repository | What it is |
+|---|---|
+| [`cli`](https://github.com/electron-publish-pro/cli) | The `epp` command-line tool · [npm: `electron-publish-pro`](https://www.npmjs.com/package/electron-publish-pro) |
+| [`docs`](https://github.com/electron-publish-pro/docs) | Documentation |
+
+## What's live and what's next
+
+| | Status |
+|---|---|
+| Release Readiness Check (web) | ✅ Live |
+| `epp` CLI with `--json` output for CI and AI agents | ✅ Live |
+| Signed and notarized macOS builds | 🗳️ [On the roadmap](https://electronpublish.com/roadmap) |
+| Windows code signing | 🗳️ [On the roadmap](https://electronpublish.com/roadmap) |
+| Publishing to GitHub Releases, Mac App Store and Microsoft Store | 🗳️ [On the roadmap](https://electronpublish.com/roadmap) |
+
+Vote on the roadmap for what you need; the most-wanted parts get built first.
+
+## Links
+
+- 🌐 [electronpublish.com](https://electronpublish.com)
 - 📖 [Documentation](https://electronpublish.com/docs)
 - 🔒 [Security](https://electronpublish.com/security)
-- 🐦 [Twitter](https://twitter.com/aspect_pub)
-
-## 📊 Status
-
-🚧 **Coming Soon** — [Join the waitlist](https://electronpublish.com)
-
----
-
-**Built with ❤️ for Electron developers**
+- ✉️ hello@electronpublish.com
